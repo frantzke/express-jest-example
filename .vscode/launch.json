@@ -18,7 +18,7 @@
             "type": "node"
         },
         {
-            "name": "Test",
+            "name": "Jest Test",
             "request": "launch",
             "runtimeArgs": [
                 "run-script",

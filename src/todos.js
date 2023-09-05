@@ -1,4 +1,3 @@
-
 const { Router } = require('express');
 const app = Router();
 
@@ -13,7 +12,7 @@ app.post('/todos', (req, res) => {
   try {
     const { item, completed } = req.body;
     if (!item || completed === undefined) {
-      throw new Error("Mising item or completed");
+      throw new Error('Mising item or completed');
     }
 
     const newTodo = {
@@ -30,6 +29,21 @@ app.post('/todos', (req, res) => {
   }
 });
 
+app.get('/todos/:id', (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+    const todo = todos.find((todo) => todo.id == id);
+    if (!todo) {
+      throw new Error('Todo not found');
+    }
+    return res.status(200).json(todo);
+  } catch (error) {
+    return res.status(404).json({
+      error: error.message || error,
+    });
+  }
+});
+
 app.put('/todos/:id', (req, res) => {
   try {
     const id = req.params.id;
@@ -40,7 +54,7 @@ app.put('/todos/:id', (req, res) => {
     todo.completed = req.body.completed;
     return res.status(201).json(todo);
   } catch (error) {
-    return res.status(500).json({
+    return res.status(404).json({
       error: error.message || error,
     });
   }
@@ -57,7 +71,7 @@ app.delete('/todos/:id', (req, res) => {
     todos.splice(index, 1);
     return res.status(200).json(todos);
   } catch (error) {
-    return res.status(500).json({
+    return res.status(404).json({
       error: error.message || error,
     });
   }
