@@ -6,7 +6,13 @@ const collectionLink = `https://api.postman.com/collections/21506003-9ddc52f7-44
 newman.run(
   {
     collection: collectionLink,
-    reporters: 'cli',
+    reporters: ['cli', 'htmlextra'],
+    iterationCount: 1,
+    reporter: {
+      htmlextra: {
+        export: "./newman/test-report.html"
+      }
+    }
     // environment: envString
   },
   (err) => {
@@ -14,6 +20,6 @@ newman.run(
       console.log(err);
       throw err;
     }
-    console.log('all tests passed');
+    console.log('Finished running tests');
   }
 );

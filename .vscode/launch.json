@@ -29,6 +29,19 @@
                 "<node_internals>/**"
             ],
             "type": "node"
+        },
+        {
+            "name": "Newman Test",
+            "request": "launch",
+            "runtimeArgs": [
+                "run-script",
+                "newman-test"
+            ],
+            "runtimeExecutable": "npm",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
         }
     ]
 }
