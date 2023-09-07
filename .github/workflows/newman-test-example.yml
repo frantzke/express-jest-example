@@ -32,6 +32,6 @@ jobs:
       # This step runs `npm ci` to install any dependencies listed in your `package.json` file.
       - run: npm ci
       # Run the server
-      - run: npm run 
+      - run: npm run run
       # This step runs the `test` script that is specified under the `scripts` key in your `package.json` file.
-      - run: npm newman-test
+      - run: npm run newman-test
