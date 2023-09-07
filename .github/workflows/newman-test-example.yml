@@ -1,6 +1,6 @@
 # The name of the workflow. GitHub displays the names of your workflows under your repository's "Actions" tab. If you omit `name`, GitHub displays the workflow file path relative to the root of the repository.
 name: Node.js CI
-run-name: "Run automatic test"
+run-name: Run Newman Tests
 # This example workflow assumes that the default branch for your repository is `main`. If the default branch has a different name, edit this example and add your repository's default branch.
 on:
   push:
@@ -8,7 +8,6 @@ on:
   pull_request:
     branches: [ master, github-actions ]
 
-#
 jobs:
   build:
 
@@ -32,7 +31,7 @@ jobs:
           node-version: 18.x
       # This step runs `npm ci` to install any dependencies listed in your `package.json` file.
       - run: npm ci
-      # This step runs the `build` script if there is one specified under the `scripts` key in your `package.json` file.
-      - run: npm run build --if-present
+      # Run the server
+      - run: npm run 
       # This step runs the `test` script that is specified under the `scripts` key in your `package.json` file.
-      - run: npm test
+      - run: npm newman-test
