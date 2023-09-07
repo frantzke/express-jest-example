@@ -1,12 +1,12 @@
 # The name of the workflow. GitHub displays the names of your workflows under your repository's "Actions" tab. If you omit `name`, GitHub displays the workflow file path relative to the root of the repository.
 name: Node.js CI
-
+run-name: "Run automatic test"
 # This example workflow assumes that the default branch for your repository is `main`. If the default branch has a different name, edit this example and add your repository's default branch.
 on:
   push:
-    branches: [ master ]
+    branches: [ master, github-actions ]
   pull_request:
-    branches: [ master ]
+    branches: [ master, github-actions ]
 
 #
 jobs:
